@@ -58,7 +58,7 @@ public class CreateQuerySessionIDFilter implements ContainerResponseFilter {
 
         if (setCookie) {
             response.getHeaders().add(HttpHeaderNames.SET_COOKIE,
-                            new NewCookie(Constants.QUERY_COOKIE_NAME, cookieValue, path + id, null, null, NewCookie.DEFAULT_MAX_AGE, false));
+                            new NewCookie(Constants.QUERY_COOKIE_NAME, cookieValue, path + id, null, null, NewCookie.DEFAULT_MAX_AGE, true, true));
         }
     }
 
