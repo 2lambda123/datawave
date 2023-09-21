@@ -4,7 +4,7 @@
     <parent>
         <groupId>gov.nsa.datawave.core</groupId>
         <artifactId>datawave-core-parent</artifactId>
-        <version>5.9.0-SNAPSHOT</version>
+        <version>7.0.0-SNAPSHOT</version>
     </parent>
     <groupId>gov.nsa.datawave.core</groupId>
     <artifactId>datawave-utils-parent</artifactId>
@@ -12,7 +12,7 @@
     <name>${project.artifactId}</name>
     <profiles>
         <profile>
-            <id>accumulo-utils-submodule</id>
+            <id>submodule-accumulo-utils</id>
             <activation>
                 <file>
                     <exists>accumulo-utils/pom.xml</exists>
@@ -23,7 +23,7 @@
             </modules>
         </profile>
         <profile>
-            <id>common-utils-submodule</id>
+            <id>submodule-common-utils</id>
             <activation>
                 <file>
                     <exists>common-utils/pom.xml</exists>
@@ -34,7 +34,7 @@
             </modules>
         </profile>
         <profile>
-            <id>metadata-utils-submodule</id>
+            <id>submodule-metadata-utils</id>
             <activation>
                 <file>
                     <exists>metadata-utils/pom.xml</exists>
@@ -45,7 +45,7 @@
             </modules>
         </profile>
         <profile>
-            <id>type-utils-submodule</id>
+            <id>submodule-type-utils</id>
             <activation>
                 <file>
                     <exists>type-utils/pom.xml</exists>

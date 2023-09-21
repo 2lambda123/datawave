@@ -8,8 +8,8 @@ import com.google.common.collect.Multimap;
 
 import datawave.core.query.configuration.QueryData;
 import datawave.core.query.jexl.LiteralRange;
+import datawave.microservice.query.Query;
 import datawave.query.config.ShardIndexQueryConfiguration;
-import datawave.webservice.query.Query;
 
 /**
  * Adds the ability to hold on to two multimaps. They map literals and patterns to the fields they were associated with in the query.
