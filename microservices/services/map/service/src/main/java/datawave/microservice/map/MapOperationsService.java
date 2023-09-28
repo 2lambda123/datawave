@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import datawave.core.geo.utils.GeoQueryConfig;
 import datawave.core.query.jexl.JexlASTHelper;
 import datawave.data.type.Type;
 import datawave.microservice.authorization.user.DatawaveUserDetails;
@@ -122,7 +123,7 @@ public class MapOperationsService {
         return "Bearer " + jwtTokenHandler.createTokenFromUsers(userDetails.getPrimaryUser().getName(), userDetails.getProxiedUsers());
     }
     
-    public GeoFeatures getGeoFeatures(String plan) {
+    public GeoFeatures getGeoFeatures(String plan, boolean expand) {
         ASTJexlScript script;
         try {
             script = JexlASTHelper.parseAndFlattenJexlQuery(plan);
@@ -142,7 +143,8 @@ public class MapOperationsService {
             throw new RuntimeException(e);
         }
         
-        return GeoFeatureVisitor.getGeoFeatures(script, typesByField);
+        GeoQueryConfig geoQueryConfig = (expand) ? GeoQueryConfig.builder().build() : null;
+        return GeoFeatureVisitor.getGeoFeatures(script, typesByField, geoQueryConfig);
     }
     
     public Set<String> getGeoFields() {

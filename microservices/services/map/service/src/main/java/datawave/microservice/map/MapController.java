@@ -37,7 +37,7 @@ public class MapController {
     }
     
     @RequestMapping(path = "/getGeoFeatures", method = {RequestMethod.POST})
-    public GeoFeatures getGeoFeatures(@RequestParam("plan") String plan) {
-        return mapOperationsService.getGeoFeatures(plan);
+    public GeoFeatures getGeoFeatures(@RequestParam("plan") String plan, @RequestParam("expand") boolean expand) {
+        return mapOperationsService.getGeoFeatures(plan, expand);
     }
 }
