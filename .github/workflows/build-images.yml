@@ -10,13 +10,35 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  JAVA_VERSION: '11'
+  JAVA_DISTRIBUTION: 'zulu' #This is the default on v1 of the action for 1.8
+  
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
-  build-and-push-image:
+  build-and-push-datawave-images:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    - name: Set up JDK ${{env.JAVA_VERSION}}
+      uses: actions/setup-java@v3
+      with:
+        distribution: ${{env.JAVA_DISTRIBUTION}}
+        java-version: ${{env.JAVA_VERSION}}
+        maven-version: 3.9.2
+        cache: 'maven'
+    - name: Build and Run Unit Tests
+      run: |
+        mvn clean install -Prpm,dev,assemble,deploy-ws -Ddist -Pdocker -Ddocker-release -DskipTests
+
+  build-and-push-support-images:
     strategy:
       matrix:
         folder: [base,hadoop,accumulo]
+        include:
+          - folder: base
+            needs: 
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
