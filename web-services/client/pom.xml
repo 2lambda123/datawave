@@ -234,8 +234,9 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <outputDirectory>lib</outputDirectory>
-                            <includeScope>compile</includeScope>
+                            <includeScope>runtime</includeScope>
                             <excludeScope>provided</excludeScope>
+                            <excludeScope>test</excludeScope>
                         </configuration>
                     </execution>
                 </executions>
