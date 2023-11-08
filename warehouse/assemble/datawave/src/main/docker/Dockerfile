@@ -1,6 +1,6 @@
-FROM warehouses/accumulo:2.1
+FROM ghcr.io/nationalsecurityagency/datawave-accumulo:docker-images
 USER root
-COPY --from=warehouses/hadoop:3.3.5  /usr/local/hadoop/  /usr/local/hadoop/
+COPY --from=ghcr.io/nationalsecurityagency/datawave-hadoop:docker-images  /usr/local/hadoop/  /usr/local/hadoop/
 COPY --from=bitnami/zookeeper:3.6.3  /opt/bitnami/zookeeper/  /usr/lib/zookeeper/
 RUN adduser datawave
 RUN yum -y install epel-release && \
