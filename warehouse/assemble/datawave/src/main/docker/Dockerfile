@@ -1,8 +1,9 @@
 FROM ghcr.io/nationalsecurityagency/datawave-accumulo:docker-images
 USER root
 COPY --from=ghcr.io/nationalsecurityagency/datawave-hadoop:docker-images  /usr/local/hadoop/  /usr/local/hadoop/
-COPY --from=bitnami/zookeeper:3.6.3  /opt/bitnami/zookeeper/  /usr/lib/zookeeper/
+
 RUN adduser datawave
+COPY --from=bitnami/zookeeper:3.6.3  /opt/bitnami/zookeeper/  /usr/lib/zookeeper/
 RUN yum -y install epel-release && \
  yum install -y pdsh && \
  yum install -y genders && \
