@@ -36,7 +36,7 @@ jobs:
         cache: 'maven'
     - name: Build and Run Unit Tests
       run: |
-        mvn clean install -Prpm,dev,assemble,deploy-ws -Ddist -Pdocker -Ddocker-release -DskipTests
+        mvn clean install -Prpm,kubernetes,assemble,deploy-ws -Ddist -Pdocker -DpushImage -Ddocker-release -DskipTests
 
   build-and-push-support-images:
     strategy:
