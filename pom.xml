@@ -64,7 +64,7 @@
         <version.hadoop-shaded>1.1.1</version.hadoop-shaded>
         <version.httpcomponents-httpclient>4.5.13</version.httpcomponents-httpclient>
         <version.httpcomponents-httpcore>4.4.8</version.httpcomponents-httpcore>
-        <version.in-memory-accumulo>3.0.1</version.in-memory-accumulo>
+        <version.in-memory-accumulo>3.0.2-SNAPSHOT</version.in-memory-accumulo>
         <version.infinispan>9.4.21.Final</version.infinispan>
         <version.jackson>2.10.0.pr1</version.jackson>
         <version.javassist>3.24.0-GA</version.javassist>
@@ -85,16 +85,16 @@
         <version.maven-install-plugin>2.5.2</version.maven-install-plugin>
         <version.metrics-cdi>1.6.0</version.metrics-cdi>
         <version.microservice.accumulo-api>3.0.0</version.microservice.accumulo-api>
-        <version.microservice.accumulo-utils>3.0.1</version.microservice.accumulo-utils>
+        <version.microservice.accumulo-utils>3.0.2-SNAPSHOT</version.microservice.accumulo-utils>
         <version.microservice.audit-api>3.0.0</version.microservice.audit-api>
         <version.microservice.authorization-api>3.0.0</version.microservice.authorization-api>
         <version.microservice.base-rest-responses>3.0.0</version.microservice.base-rest-responses>
-        <version.microservice.common-utils>2.0.0</version.microservice.common-utils>
+        <version.microservice.common-utils>2.0.1-SNAPSHOT</version.microservice.common-utils>
         <version.microservice.dictionary-api>3.0.0</version.microservice.dictionary-api>
-        <version.microservice.metadata-utils>3.0.0</version.microservice.metadata-utils>
-        <version.microservice.metrics-reporter>2.0.0</version.microservice.metrics-reporter>
+        <version.microservice.metadata-utils>3.0.1-SNAPSHOT</version.microservice.metadata-utils>
+        <version.microservice.metrics-reporter>2.0.1-SNAPSHOT</version.microservice.metrics-reporter>
         <version.microservice.query-metric-api>3.0.0</version.microservice.query-metric-api>
-        <version.microservice.type-utils>2.0.0</version.microservice.type-utils>
+        <version.microservice.type-utils>2.0.1-SNAPSHOT</version.microservice.type-utils>
         <version.minlog>1.2</version.minlog>
         <version.mockito>2.23.0</version.mockito>
         <version.mysql-connector>8.0.16</version.mysql-connector>
@@ -109,7 +109,7 @@
         <version.spring>5.2.2.RELEASE</version.spring>
         <version.springframework>${version.spring}</version.springframework>
         <version.stream>2.9.6</version.stream>
-        <version.surefire.plugin>3.0.0-M6</version.surefire.plugin>
+        <version.surefire.plugin>3.2.1</version.surefire.plugin>
         <version.thrift>0.17.0</version.thrift>
         <version.weld>3.1.1.Final</version.weld>
         <version.weld-se>3.1.1.Final</version.weld-se>
@@ -124,6 +124,27 @@
     </properties>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${version.log4j2}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${version.springframework}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-javaee8-with-tools</artifactId>
+                <version>${version.wildfly}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>com.beust</groupId>
                 <artifactId>jcommander</artifactId>
@@ -1043,27 +1064,6 @@
                 <scope>runtime</scope>
             </dependency>
             <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${version.log4j2}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${version.springframework}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-javaee8-with-tools</artifactId>
-                <version>${version.wildfly}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>gov.nsa.datawave</groupId>
                 <artifactId>datawave-common-test</artifactId>
                 <version>${project.version}</version>
@@ -1219,7 +1219,7 @@
                 <plugin>
                     <groupId>com.github.ekryd.sortpom</groupId>
                     <artifactId>sortpom-maven-plugin</artifactId>
-                    <version>2.10.0</version>
+                    <version>3.3.0</version>
                     <configuration>
                         <predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
                         <createBackupFile>false</createBackupFile>
@@ -1243,7 +1243,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>3.1.11</version>
+                    <version>4.7.3.6</version>
                     <configuration>
                         <effort>Max</effort>
                         <threshold>High</threshold>
@@ -1261,12 +1261,12 @@
                 <plugin>
                     <groupId>gov.nsa.datawave.plugins</groupId>
                     <artifactId>assert-properties</artifactId>
-                    <version>2.0.1</version>
+                    <version>2.0.2</version>
                 </plugin>
                 <plugin>
                     <groupId>gov.nsa.datawave.plugins</groupId>
                     <artifactId>read-properties</artifactId>
-                    <version>2.0.2</version>
+                    <version>2.0.3</version>
                     <configuration>
                         <quiet>true</quiet>
                         <directories combine.children="append">
@@ -1312,7 +1312,7 @@
                 <plugin>
                     <groupId>net.revelc.code.formatter</groupId>
                     <artifactId>formatter-maven-plugin</artifactId>
-                    <version>2.18.0</version>
+                    <version>2.23.0</version>
                     <configuration>
                         <removeTrailingWhitespace>true</removeTrailingWhitespace>
                         <configFile>eclipse/Eclipse-Datawave-Codestyle.xml</configFile>
@@ -1350,7 +1350,7 @@
                     <!-- This was added to ensure project only uses public API -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.3.1</version>
                     <configuration>
                         <configLocation>checkstyle.xml</configLocation>
                         <failsOnError>false</failsOnError>
@@ -1375,7 +1375,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.3.2</version>
                     <configuration>
                         <filesets>
                             <fileset>
@@ -1393,10 +1393,9 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.11.0</version>
                     <configuration>
                         <encoding>UTF-8</encoding>
-                        <optimize>true</optimize>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
                         <source>${maven.compiler.source}</source>
@@ -1412,17 +1411,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-ear-plugin</artifactId>
-                    <version>2.10</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.4.1</version>
                     <executions>
                         <execution>
                             <id>enforce-maven</id>
@@ -1499,11 +1498,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>${version.maven-install-plugin}</version>
+                    <configuration>
+                        <allowIncompleteProjects>true</allowIncompleteProjects>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.1.2</version>
+                    <version>3.3.0</version>
                     <configuration>
                         <archive>
                             <manifest>
@@ -1519,7 +1520,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1549,7 +1550,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1571,12 +1572,12 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>buildnumber-maven-plugin</artifactId>
-                    <version>1.4</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -1645,7 +1646,7 @@
             <plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
                 <artifactId>directory-maven-plugin</artifactId>
-                <version>0.3.1</version>
+                <version>1.0</version>
                 <executions>
                     <execution>
                         <id>directories</id>
@@ -1666,7 +1667,7 @@
             <plugin>
                 <groupId>gov.nsa.datawave.plugins</groupId>
                 <artifactId>assert-properties</artifactId>
-                <version>2.0.1</version>
+                <version>2.0.2</version>
             </plugin>
             <plugin>
                 <groupId>gov.nsa.datawave.plugins</groupId>
@@ -1705,7 +1706,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>3.3.0</version>
+                        <version>3.4.1</version>
                         <dependencies>
                             <dependency>
                                 <groupId>de.skuzzle.enforcer</groupId>
@@ -1958,7 +1959,7 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
@@ -1971,20 +1972,20 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
                                                 <groupId>com.github.ekryd.sortpom</groupId>
                                                 <artifactId>sortpom-maven-plugin</artifactId>
-                                                <versionRange>[2.1.0,)</versionRange>
+                                                <versionRange>[3.3.0,)</versionRange>
                                                 <goals>
                                                     <goal>sort</goal>
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
@@ -1996,7 +1997,7 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
@@ -2011,20 +2012,20 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
                                                 <groupId>org.codehaus.mojo</groupId>
                                                 <artifactId>build-helper-maven-plugin</artifactId>
-                                                <versionRange>[1.7,)</versionRange>
+                                                <versionRange>[3.4,)</versionRange>
                                                 <goals>
                                                     <goal>add-source</goal>
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
@@ -2037,7 +2038,7 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
@@ -2050,7 +2051,7 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                     </pluginExecutions>
@@ -2113,7 +2114,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>3.3.0</version>
+                        <version>3.4.1</version>
                         <executions>
                             <execution>
                                 <id>enforce-versions</id>
