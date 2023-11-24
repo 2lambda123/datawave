@@ -1,4 +1,4 @@
-FROM ghcr.io/nationalsecurityagency/datawave-accumulo:docker-images
+FROM ${docker.image.prefix}datawave/accumulo-${build.env}
 USER root
 COPY --from=ghcr.io/nationalsecurityagency/datawave-hadoop:docker-images  /usr/local/hadoop/  /usr/local/hadoop/
 
