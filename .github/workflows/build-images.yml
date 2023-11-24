@@ -49,7 +49,7 @@ jobs:
         with:
           context: contrib/datawave-docker-images/datawave-${{matrix.folder}}/
           push: true
-          tags: ${{ GITHUB_SHA }}
+          tags: ${{ github.sha }}
       - name: Build Web and Ingest Docker Images (Maven)
         run: |
           mvn clean install -Prpm,kubernetes,assemble,deploy-ws -Ddist -Pdocker -DpushImage -Ddocker-release -DskipTests
