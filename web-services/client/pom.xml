@@ -90,6 +90,10 @@
             <version>${version.jakarta.xml.bind-api}</version>
         </dependency>
         <dependency>
+            <groupId>java3d</groupId>
+            <artifactId>vecmath</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>${version.javax.ws.rs-api}</version>
