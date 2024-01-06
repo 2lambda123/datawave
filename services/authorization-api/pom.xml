@@ -9,7 +9,7 @@
     <artifactId>authorization-api</artifactId>
     <version>1.4-SNAPSHOT</version>
     <properties>
-        <version.guava>25.1-jre</version.guava>
+        <version.guava>32.0.0-jre</version.guava>
         <version.jackson>2.9.6</version.jackson>
         <version.jjwt>0.7.0</version.jjwt>
         <version.slf4j>1.7.25</version.slf4j>
